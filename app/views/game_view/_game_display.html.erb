@@ -1,0 +1,93 @@
+
+<% if @user.blank? %>
+    <div class="question-area">
+      <div class="true">
+      </div>
+      <div class="twitch-login">
+          <img src="assets/connect.jpg" class="twitch-connect" href="#" />
+      </div>
+      <div class="false">
+      </div>
+    </div>
+<% else %>
+    <div class="main-game-wrapper">
+    <% if @game.blank? %>
+        <div class="question-counter">
+            <div class="left-counter">
+                -
+            </div>
+            <div class="question-box">
+                Game Not Started!
+            </div>
+            <div class="right-counter">
+                -
+            </div>
+        </div>
+     <% else %>
+        <div class="question-area">
+            <div class="left-counter">
+                Living Players: <%= @game.players.alive.count %>
+                <div class="true">
+                    <% if @user.is_alive(@game) %>
+                        <%if !@user.answered_current_question?(@game) %>
+                            <%= button_to "", answerT_game_path(@game), :form_class  => "js-true-input", :class=> "true-button", :remote => true %>
+                        <% else %>
+                            Waiting for the next question.
+                        <% end %>
+                    <% elsif !@user.is_playing(@game) %>
+                        You are not playing.
+                    <% else %>
+                        <% if @game.status != "Pending" %>
+                            You are Dead!
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+              <div class="question-box">
+                <h2> <%= @game.title %> </h2>
+                <div> Welcome <%= @user.name %>: </div>
+
+                <% if @game.status == "Pending" %>
+                    Game About to Start.
+                    <% if @user.in_current_game %>
+                        You have joined the game!
+                    <% else %>
+                        <%= button_to "Join Game", join_game_url(@game)  %>
+                    <% end %>
+                <% else %>
+                    <% if @game.current_question.blank? %>
+                        Waiting for the first question.
+                    <% elsif @game.current_question.status == "processed" %>
+                        Preparing next question!
+                    <% else %>
+                        <strong> ATK Wants to Know... </strong>
+                        <p>
+                            <%= @game.current_question.text %>
+                        <p>
+                    <% end %>
+                <% end %>
+              </div>
+            <div class="right-counter">
+                Dead Players: <%= @game.players.dead.count %>
+                <div class="false">
+                    <% if @user.is_alive(@game) %>
+                        <%if !@user.answered_current_question?(@game) %>
+                            <%= button_to "", answerF_game_path(@game), :form_class  => "js-false-input", :class=> "false-button", :remote => true %>                        
+                        <% else %>
+                            Waiting for the next question.
+                        <% end %>
+                    <% elsif !@user.is_playing(@game) %>
+                        You are not playing.
+                    <% else %>
+                        <% if @game.status != "Pending" %>
+                            You are Dead!
+                        <% end %>
+                    <% end %>
+                </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    <% end %>
+    </div>
+<% end %>

@@ -1,0 +1,13 @@
+<%= @games.count %> Total Games Played <br>
+<table>
+	<th> Name
+	<th> Status
+	<% @games.each do |g| %>
+		<tr>
+			<td>
+			<%= link_to g.title, g%> 
+			<td>
+			<%= g.status %>            
+	<% end %>
+</table>
+<%= link_to "New Game", new_game_url %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_id: 1
+  question_number: 1
+  text: MyString
+  answer: MyString
+
+two:
+  game_id: 1
+  question_number: 1
+  text: MyString
+  answer: MyString

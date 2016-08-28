@@ -1,0 +1,84 @@
+<p>
+<strong>Title:</strong>
+<%= @game.title %>
+<p>
+<strong>Status:</strong>
+<%= @game.status %>
+<p>
+<h3> Questions </h3>
+<table>
+<tr>
+<th> # </td>
+<th> Question </td>
+<th> Answer </td>
+<th> Correct #</th>
+<th> Incorrect #</th>
+<th> T Response # </th>
+<th> F Response # </th>
+<th> Status </th>
+<% @game.questions.numerical_order.each do |q| %>
+  <tr>
+  <td> <%= q.question_number %> </td>
+  <td><%= q.text %> </td>
+  <% if q.status != "processed" %>
+  <td>
+    <%= form_for [@game,q] do |f| %>
+        <%= f.select :answer, [['T', 'T'], ['F', 'F'], ['undefined', 'undefined']] %> <br>
+        <%= f.submit %>
+    <% end %>
+  </td>
+  <% else %>
+  <td> <%= q.answer %> </td>
+  <% end %>
+
+  <td><%= q.correct_responses.count %></td>
+  <td><%= q.incorrect_responses.count %></td>
+  <td><%= q.t_responses.count %></td>
+  <td><%= q.f_responses.count %></td>
+
+  <td><%= q.status %></td>
+ <% end %>
+</table>
+<% if @game.status == "Pending" %>
+    <%= button_to "Start Game", start_game_url(@game) %>
+<% elsif ! @game.current_question.blank? && @game.status != "Ended" %>
+    <p>
+    <%= button_to "KILL GAME", end_game_url(@game) %>
+<% end %>
+<% if @game.status != "Ended" %>
+  <%= form_for [@game,@new_question] do |f| %>
+      <p>
+      <%= f.label :text %><br>
+      <%= f.text_field :text %>
+      <p>
+      <%= f.label :answer %><br>
+      <%= f.select :answer, [['T', 'T'], ['F', 'F'], ['undefined', 'undefined']] %>
+      <%= f.submit %>
+  <% end %>
+<% end %>
+<h3> Players </h3>
+<strong> Living Players: </strong> <%= @game.players.alive.count %>
+<strong> Dead Players: </strong> <%= @game.players.dead.count %>
+<br>
+<% if !@game.current_question.blank? && @game.current_question.status == "current" %>
+    <h4> Current Question </h4>
+    <p> Question Is 
+    <%= @game.current_question.text %>
+    <br>
+    <strong> Answered Players: </strong> <%= @game.current_question.answers.count %>
+    <strong> Idle Players: </strong> <%= @game.non_responsive_players.count %>
+    <p>
+    <%= button_to "End Round", end_round_game_url(@game) %>
+<% end %>
+<p>
+<strong>Living:</strong><br>
+<% @game.players.alive.each do |p| %>
+    Name: <%= p.user.name %><br>
+<% end %>
+<p>
+<strong>Dead:</strong><br>
+<% @game.players.dead.each do |p| %>
+    Name: <%= p.user.name  %><br>
+<% end %>
+
+  

@@ -1,0 +1,148 @@
+// Place all the styles related to the GameView controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body { font-family: arial, verdana, sans-serif; 
+	margin: 0;
+}
+
+.header {
+	width: 980px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.view-area { 
+	height: 388px;
+	width: 980px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.view-client { 
+	width: 620px;
+	float: left;
+}
+
+.chat-area {
+	float: right;
+}
+.question-area {
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+}
+.left-counter {
+	float: left;
+	height: 65px;
+	width: 242px;
+	margin: 0px;
+}
+.question-box {
+	float: left;
+	width: 476px;
+	margin-left: 10px;
+ }
+.right-counter {
+	float: left;
+	height: 65px;
+	width: 242px;
+	margin: 0px;
+}
+
+.clear { 
+	clear: left; 
+}
+
+.true-false {
+	height: 137px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+
+}
+.true {
+	height: 127px;
+	width: 242px;
+	margin: 0px;
+	background:#FFF;
+}
+.true-button {
+	background: url(true.jpg);
+	height: 127px;
+	width: 242px;
+}
+.connect-death {
+	float: left;
+	height: 127px;
+	width: 476px;
+	margin-left: 10px;
+    margin-right: -150px;
+}
+.false {
+	height: 127px;
+	width: 242px;
+	margin: 0px;
+    background:#FFF;
+}
+
+.false-button {
+	background: url(false.jpg);
+	height: 127px;
+	width: 242px;
+}
+
+.links {
+	height: 65px;
+	width: 980px;
+	margin: 0 auto;
+}
+.howtoplay {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+.pastgames {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+.leaderboard {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+.feedback {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+
+.footer {
+	height: 65px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.shop {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+.youtube {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+.twitter {
+	float: left;
+	height: 65px;
+	width: 245px;
+}
+.facebook {
+	float: left;
+	height: 65px;
+	width: 245px;
+}

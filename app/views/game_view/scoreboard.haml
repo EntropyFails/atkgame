@@ -1,0 +1,16 @@
+%table
+    %tr
+        %th
+            Username
+        %th
+            Score
+        %th
+            Victories
+        %th
+            Correct Answers
+    - @users.each do |u|
+        %tr
+            %td=u.name
+            %td=u.score
+            %td=u.victories
+            %td=u.correct_answers

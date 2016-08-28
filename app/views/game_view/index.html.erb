@@ -1,0 +1,57 @@
+<div class="header">
+  <img src="assets/header.jpg" alt="Header">
+</div>
+
+<div class="view-area">
+    <div class="view-client">
+    <iframe
+        src="http://player.twitch.tv/?channel=atk"
+        height="378"
+        width="620"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen="true">
+    </iframe>
+    </div>
+  <div class="chat-area">
+    <iframe frameborder="0"
+        scrolling="no"
+        id="chat_embed"
+        src="http://www.twitch.tv/atk/chat"
+        height="378"
+        width="350">
+    </iframe>
+  </div>    
+</div>
+<div class="game-client" id="game-client">  
+    <%= render "game_display" %>
+</div>
+<div class="links">
+  <div class="howtoplay">
+    <a href="http://i.imgur.com/Vjqo7Qh.jpg"><img src="assets/howtoplay.jpg" alt="How To Play"></a>
+  </div>
+  <div class="pastgames">
+    <a href="#"><img src="assets/past.jpg" alt="Past Games"></a>
+  </div>
+  <div class="leaderboard">
+    <a href="<%= scoreboard_url %>"><img src="assets/leader.jpg" alt="Leaderboard"></a>
+  </div>
+  <div class="feedback">
+    <a href="#"><img src="assets/feedback.jpg" alt="Feedback"></a>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="shop">
+    <a href="http://atk402.storenvy.com/" target="_blank"><img src="assets/shop.jpg" alt="Shop"></a>
+  </div>
+  <div class="youtube">
+    <a href="https://www.youtube.com/user/AlHelix" target="_blank"><img src="assets/youtube.jpg" alt="Youtube"></a>
+  </div>
+  <div class="twitter">
+    <a href="https://twitter.com/atk402" target="_blank"><img src="assets/twitter.jpg" alt="Twitter"></a>
+  </div>
+  <div class="facebook">
+    <a href="https://www.facebook.com/pages/ATK/362885033813707" target="_blank"><img src="assets/facebook.jpg" alt="Facebook"></a>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+//# Place all the behaviors and hooks related to the matching controller here.
+//# All this logic will automatically be available in application.js.
+//# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+function updateGameView() {
+    $.getScript('/show_game_display.js');
+    setTimeout(updateGameView, 8000);
+};
+
+$(function() {
+    $('.twitch-connect').click(function() {
+      window.location = "https://api.twitch.tv/kraken/oauth2/authorize?response_type=code&client_id=<%= Rails.application.config.twitch_api_key %>&redirect_uri=<%= Rails.application.config.twitch_api_redirect_url%>&scope=user_read";
+    });
+
+    if ($('.main-game-wrapper').length){
+        setTimeout(updateGameView, 8000);
+    }
+
+});
+
